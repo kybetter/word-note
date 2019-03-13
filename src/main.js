@@ -1,6 +1,9 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 
+const debug = /--debug/.test(process.argv[2])
+
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
@@ -14,6 +17,12 @@ function createWindow () {
       nodeIntegration: true
     }
   })
+
+  if (debug) {
+    mainWindow.webContents.openDevTools()
+    mainWindow.maximize()
+    require('devtron').install()
+  }
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
