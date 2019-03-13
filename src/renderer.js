@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const file = path.resolve(__dirname, 'dic.json');
-const dic = require(path.resolve(__dirname, file));
+const dic = require(file);
 
 const submit = document.querySelector("#submit");
 const search = document.querySelector("#search");
